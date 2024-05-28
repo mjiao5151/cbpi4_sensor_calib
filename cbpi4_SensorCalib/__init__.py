@@ -9,7 +9,7 @@ from time import sleep
 #import random
 from cbpi.api import *
 from cbpi.api.base import CBPiBase
-from statistics import fmean
+# from statistics import fmean
 
 logger = logging.getLogger(__name__)
 
@@ -19,7 +19,7 @@ logger = logging.getLogger(__name__)
             Property.Number(label="b", description="as b in y= a*x^2 + b*x + c"),
             Property.Number(label="c", description="as c in y= a*x^2 + b*x + c")])
 
-class GroupedSensor(CBPiSensor):
+class CalibSensor(CBPiSensor):
 
 
     def __init__(self, cbpi, id, props):
@@ -65,5 +65,5 @@ class GroupedSensor(CBPiSensor):
 
 
 def setup(cbpi):
-    cbpi.plugin.register("Grouped Sensor", GroupedSensor)
+    cbpi.plugin.register("Calibrated Sensor", CalibSensor)
     pass
