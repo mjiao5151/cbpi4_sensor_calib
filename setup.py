@@ -8,8 +8,8 @@ with open(path.join(this_directory, 'README.md'), encoding='utf-8') as f:
 
 setup(name='cbpi4_SensorCalib',
       version='0.0.1',
-      description='CraftBeerPi4 Sensor Plugin',
-      author='A. Vollkopf, B. Helm',
+      description='CraftBeerPi4 Sensor calibration',
+      author='littlem',
       author_email='mjiao1purdue@qq.com',
       url='',
       include_package_data=True,
