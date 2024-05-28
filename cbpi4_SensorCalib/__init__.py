@@ -23,14 +23,14 @@ class CalibSensor(CBPiSensor):
 
 
     def __init__(self, cbpi, id, props):
-        super(GroupedSensor, self).__init__(cbpi, id, props)
+        super(CalibSensor, self).__init__(cbpi, id, props)
         self.value = 0      
         self.sensors = 0
         self.a = self.props.get("a", 0)
         self.b = self.props.get("b", 0)
         self.c = self.props.get("c", 0)
 
-        logging.info("GROUPED Sensor")
+        logging.info("CalibSensor")
         if self.props.get("Sensor01", None) is not None:
             self.sensors = self.props.get("Sensor01")
         
