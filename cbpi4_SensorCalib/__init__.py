@@ -48,7 +48,7 @@ class GroupedSensor(CBPiSensor):
                 if sensor_value is not None:
                     values = float(sensor_value)
                 
-                if values:
+                if values is not None:
                     self.value = self.a * values**2 + self.b * values + self.c
                 else:
                     logging.info("No values fetched from the selected child sensors, check connections and setup")
@@ -59,7 +59,7 @@ class GroupedSensor(CBPiSensor):
 
             self.log_data(self.value)
             self.push_update(self.value)
-            await asyncio.sleep(1)
+            await asyncio.sleep(5)
 
         pass
 
