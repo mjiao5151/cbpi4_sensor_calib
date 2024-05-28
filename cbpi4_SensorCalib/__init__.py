@@ -26,9 +26,9 @@ class CalibSensor(CBPiSensor):
         super(CalibSensor, self).__init__(cbpi, id, props)
         self.value = 0      
         self.sensors = 0
-        self.a = self.props.get("a", 0)
-        self.b = self.props.get("b", 0)
-        self.c = self.props.get("c", 0)
+        self.a = float(self.props.get("a", 0))
+        self.b = float(self.props.get("b", 0))
+        self.c = float(self.props.get("c", 0))
 
         logging.info("CalibSensor")
         if self.props.get("Sensor01", None) is not None:
@@ -37,13 +37,12 @@ class CalibSensor(CBPiSensor):
         pass
 
     def get_state(self):
-        return self.value
+        return dict(value=self.value)
    
     async def run(self):
         while self.running == True:
             values = None
             try:
-                
                 sensor_value = self.cbpi.sensor.get_sensor_value(self.sensors).get("value")
                 if sensor_value is not None:
                     values = float(sensor_value)
@@ -59,7 +58,7 @@ class CalibSensor(CBPiSensor):
 
             self.log_data(self.value)
             self.push_update(self.value)
-            await asyncio.sleep(5)
+            await asyncio.sleep(1)
 
         pass
 
